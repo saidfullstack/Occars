@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title article.piece%}
+
+{% block body %}
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+          <h1>{{ article.piece }}</h1>
+          <h2>{{ article.marque }} {{ article.modele }}</h2>
+          <div class="text-primary" style="font-size: 4rem;font-weight: bold">{{ article.prix }} €</div>
+          <a href="#" class="btn btn-primary">Contacter le vendeur</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-4" >
+
+    <p>
+      {{ article.description | nl2br }}
+    </p>
+
+    <div class="row">
+      <div class="col-md-8">
+        <h2>CARACTERISTIQUES :</h2>
+         <table class="table table-striped">
+           <tr>
+             <td>PIECE :</td>
+             <td>{{ article.piece }}</td>
+           </tr>
+           <tr>
+             <td>MARQUE :</td>
+             <td>{{ article.marque }}</td>
+           </tr>
+           <tr>
+             <td>MODELE :</td>
+             <td>{{ article.modele }}</td>
+           </tr>
+           <tr>
+             <td>ENERGIE :</td>
+             <td>{{ article.energie }}</td>
+           </tr>
+           <tr>
+             <td>VENDU :</td>
+             <td>{{ article.seulType }}</td>
+           </tr>
+         </table>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
