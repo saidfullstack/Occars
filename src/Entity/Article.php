@@ -4,16 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
 class Article
 {
-    const SEUL = [
-      0 => 'seul',
-      1 => 'avec son assemblage'
-    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -47,11 +45,6 @@ class Article
     private $image;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $seul;
-
-    /**
      * @ORM\Column(type="float")
      */
     private $prix;
@@ -60,6 +53,11 @@ class Article
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $disponible = null;
 
 
     public function getId(): ?int
@@ -71,31 +69,6 @@ class Article
     {
         return $this->piece;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getSeul(): ?int
-    {
-        return $this->seul;
-    }
-
-    /**
-     * @param mixed $seul
-     */
-    public function setSeul(int $seul): self
-    {
-        $this->seul = $seul;
-
-        return $this;
-    }
-
-    // Fct pour savoir si la pièce est vendue seul ou dans son assemblage
-    public function getSeulType(): string
-    {
-        return self::SEUL[$this->seul];
-    }
-
 
     public function setPiece(string $piece): self
     {
@@ -177,6 +150,18 @@ class Article
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDisponible(): ?bool
+    {
+        return $this->disponible;
+    }
+
+    public function setDisponible(bool $disponible): self
+    {
+        $this->disponible = $disponible;
 
         return $this;
     }

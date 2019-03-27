@@ -16,7 +16,7 @@ class HomeController extends AbstractController
      */
     public function index(ArticleRepository $repository):Response
     {
-        $articles = $repository->findLatest();
+        $articles = $repository->findBy([], ["id"=>"desc"], 4);
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
         ]);
