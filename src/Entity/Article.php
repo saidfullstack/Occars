@@ -36,6 +36,8 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez renseigner l'énergie du véhicule")
+     * @Assert\Choice({"diesel", "essence"})
      */
     private $energie;
 
@@ -56,8 +58,9 @@ class Article
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotNull(message="Veuillez indiquer si la pièce est vendue seul ou avec son assemblage")
      */
-    private $disponible = null;
+    private $disponible;
 
 
     public function getId(): ?int

@@ -29,8 +29,8 @@ class ArticleType extends AbstractType
             ->add('disponible', ChoiceType::class, [
                   'choices' => [
                      '' => null,
-                     'Seul'  => true,
-                     'Avec son assemblage' => false
+                     'seul'  => true,
+                     'avec son assemblage' => false
                   ],
                 ])
             ->add('prix', MoneyType::class)
