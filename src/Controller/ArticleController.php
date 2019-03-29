@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 
@@ -15,10 +17,16 @@ class ArticleController extends AbstractController
     /**
      * @Route("/articles", name="article.index")
      */
-    public function index()
+    public function index(PaginatorInterface $paginator, Request $request)
     {
+
+        //        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)->findAll(),
+            $request->query->getInt('page', 1),6
+        );
         return $this->render('article/index.html.twig', [
             'current_menu' => 'properties',
+            'articles' => $articles
         ]);
     }
 

@@ -14,7 +14,7 @@
             <div class="navbar-nav" style="width: 100%;display: flex;flex-direction: row-reverse">
                 {% if app.user %}
                     <li class="nav-item" style="display: flex">
-                        <a class="nav-item nav-link mx-4 {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}" style="width: 80px" href="{{ path('article.index') }}">Acheter</a>
+                        <a href="{{ path('admin.article.index') }}" class="nav-link" style="width: 160px">Gérer mes articles</a>
                         <a href="{{ path('security_logout') }}" class="nav-link" style="width: 150px">Se deconnecter</a>
                     </li>
             </div>
@@ -22,7 +22,8 @@
             <div class="navbar-nav" style="width: 100%;display: flex;flex-direction: row-reverse">
                     <li class="nav-item" style="display: flex">
                         <a href="{{ path('security_login') }}" class="nav-link mx-4" style="width: 80px">Connexion</a>
-                        <a class="nav-item nav-link" style="width: 150px" href="{{ path('security_registration') }}">Inscription</a>
+                        <a class="nav-item nav-link" style="width: 100px" href="{{ path('security_registration') }}">Inscription</a>
+                        <a href="#" class="nav-link mx-4" style="width: 80px">Rechercher</a>
                     </li>
              </div>
                 {% endif %}
